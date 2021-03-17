@@ -46,6 +46,8 @@ public class WkUserTokenProcessor extends AbstractProcessor {
                     ThreadContext.bind(builder.buildSubject());
                     nowSessionId = sessionId;
                 }
+                ac.getRequest().getSession().setAttribute("userToken", userToken);
+                ac.getRequest().getSession().setAttribute("userId", userId);
             }
             // 更新redis 统计在线状态
             String session_userToken = Strings.sNull(ac.getRequest().getSession().getAttribute("userToken"));
